@@ -15,12 +15,12 @@ export default function Home() {
   const [type, setType] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3000/songs', { params: { search, type } })
+    axios.get('http://localhost:4000/songs', { params: { search, type } })
       .then(res => setSongs(res.data));
   }, [search, type]);
 
   const toggleFavorite = (id: number) => {
-    axios.patch(`http://localhost:3000/songs/${id}/favorite`).then(() => {
+    axios.patch(`http://localhost:4000/songs/${id}/favorite`).then(() => {
       setSongs(prev =>
         prev.map(s => (s.id === id ? { ...s, isFavorite: !s.isFavorite } : s))
       );
@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Music App</h1>
+      <h1 className="text-2xl font-bold mb-4">🎧Music App 🎵</h1>
       <input
         type="text"
         placeholder="Search songs..."
@@ -39,9 +39,9 @@ export default function Home() {
       />
       <select className="border p-2 mb-4 w-full" onChange={e => setType(e.target.value)}>
         <option value="">All Types</option>
-        <option value="pop">Pop</option>
-        <option value="rock">Rock</option>
-        <option value="jazz">Jazz</option>
+        <option value="Pop">Pop</option>
+        <option value="Rock">Rock</option>
+        <option value="Classic">Classic</option>
       </select>
       <ul className="space-y-2">
         {songs.map(song => (
@@ -52,7 +52,7 @@ export default function Home() {
               className="mt-2 text-blue-500 hover:underline"
               onClick={() => toggleFavorite(song.id)}
             >
-              {song.isFavorite ? 'Unmark Favorite' : 'Mark Favorite'}
+              {song.isFavorite ? '❤️' : '🤍'}
             </button>
           </li>
         ))}
