@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">🎧Music App 🎵</h1>
+      <h1 className="text-2xl text-center font-bold mb-4">🎧Music App 🎵</h1>
       <input
         type="text"
         placeholder="Search songs..."
