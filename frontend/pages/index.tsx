@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+// after deploying backend on render, we created an env variable using backend url
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
+
 type Song = {
   id: number;
   title: string;
@@ -15,17 +18,37 @@ export default function Home() {
   const [type, setType] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:4000/songs', { params: { search, type } })
+    // Fetch songs from the backend
+    axios.get(`${API_BASE_URL}/songs`, { params: { search, type } })
       .then(res => setSongs(res.data));
   }, [search, type]);
 
-  const toggleFavorite = (id: number) => {
-    axios.patch(`http://localhost:4000/songs/${id}/favorite`).then(() => {
+
+   // Function to toggle favorite
+   const toggleFavorite = (id: number) => {
+    axios.patch(`${API_BASE_URL}/songs/${id}/favorite`).then(() => {
       setSongs(prev =>
         prev.map(s => (s.id === id ? { ...s, isFavorite: !s.isFavorite } : s))
       );
     });
   };
+
+  // before deployment \\ initial code
+  // useEffect(() => {
+  //   // Fetch songs from the backend
+  //   axios.get('http://localhost:4000/songs', { params: { search, type } })
+  //     .then(res => setSongs(res.data));
+  // }, [search, type]);
+
+
+  // before deployment  \\ initial code
+  // const toggleFavorite = (id: number) => {
+  //   axios.patch(`http://localhost:4000/songs/${id}/favorite`).then(() => {
+  //     setSongs(prev =>
+  //       prev.map(s => (s.id === id ? { ...s, isFavorite: !s.isFavorite } : s))
+  //     );
+  //   });
+  // };
 
   return (
     <div className="p-6">
