@@ -141,7 +141,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
@@ -151,12 +151,11 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "value": "postgresql://music_db_qt9e_user:VPMbGWvhbHfABCcgFXVIHUqPZVSREmMT@dpg-d05o1da4d50c73f7ojs0-a.oregon-postgres.render.com/music_db_qt9e"
       }
     }
   },
