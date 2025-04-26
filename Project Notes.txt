@@ -7,3 +7,5 @@ This are default and initial props, changes due to deployment.
 
 backend -> tsconfig.json -> script 
 "outDir": "./dist",
+"rootDir": "./src", // added
+"strict": true,     // added
