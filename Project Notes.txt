@@ -1,0 +1,9 @@
+backend -> package.json -> script 
+
+This are default and initial props, changes due to deployment. 
+// "build": "nest build",
+// "start": "nest start",
+// "start:dev": "nest start --watch",
+
+backend -> tsconfig.json -> script 
+"outDir": "./dist",
